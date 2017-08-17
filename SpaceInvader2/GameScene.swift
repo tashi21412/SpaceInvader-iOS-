@@ -14,27 +14,79 @@ class GameScene: SKScene {
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     
+    let hero = SKSpriteNode(imageNamed: "Spaceship")
+    let heroSpeed: CGFloat  = 100.0
     override func didMove(to view: SKView) {
+        backgroundColor = SKColor.black
         
-        // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-        if let label = self.label {
-            label.alpha = 0.0
-            label.run(SKAction.fadeIn(withDuration: 2.0))
-        }
         
-        // Create shape node to use during mouse interaction
-        let w = (self.size.width + self.size.height) * 0.05
-        self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
+        let xCoord = size.width * 0.5
+        let yCoord = size.height * 0.5
         
-        if let spinnyNode = self.spinnyNode {
-            spinnyNode.lineWidth = 2.5
-            
-            spinnyNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(M_PI), duration: 1)))
-            spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
-                                              SKAction.fadeOut(withDuration: 0.5),
-                                              SKAction.removeFromParent()]))
-        }
+        hero.size.height = 50
+        hero.size.width = 50
+        
+        hero.position = CGPoint(x: xCoord, y: yCoord)
+        
+        addChild(hero)
+        
+        let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedUp))
+        
+        swipeUp.direction = .up
+        
+        view.addGestureRecognizer(swipeUp)
+        
+        let swipeDown: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedDown))
+        swipeDown.direction = .down
+        view.addGestureRecognizer(swipeDown)
+        
+        
+        let swipeLeft: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedLeft))
+        swipeLeft.direction = .left
+        view.addGestureRecognizer(swipeLeft)
+        
+        let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight))
+        swipeRight.direction = .right
+        view.addGestureRecognizer(swipeRight)
+    }
+    
+    
+    func swipedUp(sender:UISwipeGestureRecognizer){
+        var actionMove : SKAction
+        
+        actionMove = SKAction.move(to: CGPoint(x: hero.position.x, y: hero.position.y + heroSpeed), duration: 0.3)
+        
+        hero.run(actionMove)
+        print("Up")
+    }
+    
+    func swipedDown(sender:UISwipeGestureRecognizer){
+        
+        var actionMove: SKAction
+        
+        actionMove = SKAction.move(to: CGPoint(x: hero.position.x, y: hero.position.y - heroSpeed), duration: 0.5)
+        
+        hero.run(actionMove)
+    }
+    
+    
+    func swipedLeft(sender:UISwipeGestureRecognizer){
+        
+        var actionMove: SKAction
+        
+        actionMove = SKAction.move(to: CGPoint(x: hero.position.x - heroSpeed, y: hero.position.y), duration: 0.5)
+        
+        hero.run(actionMove)
+    }
+    
+    
+    func swipedRight(sender:UISwipeGestureRecognizer){
+        
+        var actionMove: SKAction
+        
+        actionMove = SKAction.move(to: CGPoint(x: hero.position.x + heroSpeed, y: hero.position.y), duration: 0.5)
+        
+        hero.run(actionMove)
     }
     
     
@@ -75,7 +127,26 @@ class GameScene: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
+        
+        guard let touch = touches.first else { return }
+        
+        let touchLocation = touch.location(in: self)
+        
+        let vector = CGVector(dx: -(hero.position.x - touchLocation.x), dy: -(hero.position.y - touchLocation.y))
+        let bullet = SKSpriteNode()
+        bullet.color = UIColor.orange
+        bullet.size = CGSize (width: 5, height : 5)
+        bullet.position = CGPoint(x: hero.position.x, y: hero.position.y)
+        addChild(bullet)
+        
+        let projectileAction = SKAction.sequence([
+            SKAction.repeat(
+                SKAction.move(by: vector, duration: 0.5), count: 10),
+            SKAction.wait(forDuration: 0.5),
+            SKAction.removeFromParent()
+            ])
+        bullet.run(projectileAction)
+        
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {

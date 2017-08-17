@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		9E4548171F0D3B3600FE5A8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4548161F0D3B3600FE5A8A /* AppDelegate.swift */; };
 		9E4548191F0D3B3600FE5A8A /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9E4548181F0D3B3600FE5A8A /* GameScene.sks */; };
-		9E45481B1F0D3B3600FE5A8A /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9E45481A1F0D3B3600FE5A8A /* Actions.sks */; };
 		9E45481D1F0D3B3600FE5A8A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45481C1F0D3B3600FE5A8A /* GameScene.swift */; };
 		9E45481F1F0D3B3600FE5A8A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45481E1F0D3B3600FE5A8A /* GameViewController.swift */; };
 		9E4548221F0D3B3600FE5A8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E4548201F0D3B3600FE5A8A /* Main.storyboard */; };
@@ -21,7 +20,6 @@
 		9E4548131F0D3B3600FE5A8A /* SpaceInvader2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceInvader2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E4548161F0D3B3600FE5A8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E4548181F0D3B3600FE5A8A /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		9E45481A1F0D3B3600FE5A8A /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		9E45481C1F0D3B3600FE5A8A /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		9E45481E1F0D3B3600FE5A8A /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		9E4548211F0D3B3600FE5A8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -62,7 +60,6 @@
 			children = (
 				9E4548161F0D3B3600FE5A8A /* AppDelegate.swift */,
 				9E4548181F0D3B3600FE5A8A /* GameScene.sks */,
-				9E45481A1F0D3B3600FE5A8A /* Actions.sks */,
 				9E45481C1F0D3B3600FE5A8A /* GameScene.swift */,
 				9E45481E1F0D3B3600FE5A8A /* GameViewController.swift */,
 				9E4548201F0D3B3600FE5A8A /* Main.storyboard */,
@@ -137,7 +134,6 @@
 				9E4548191F0D3B3600FE5A8A /* GameScene.sks in Resources */,
 				9E4548241F0D3B3600FE5A8A /* Assets.xcassets in Resources */,
 				9E4548271F0D3B3600FE5A8A /* LaunchScreen.storyboard in Resources */,
-				9E45481B1F0D3B3600FE5A8A /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +271,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8FC9PW965D;
 				INFOPLIST_FILE = SpaceInvader2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Tash.SpaceInvader2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -288,6 +285,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8FC9PW965D;
 				INFOPLIST_FILE = SpaceInvader2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Tash.SpaceInvader2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -314,6 +312,7 @@
 				9E45482D1F0D3B3600FE5A8A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
