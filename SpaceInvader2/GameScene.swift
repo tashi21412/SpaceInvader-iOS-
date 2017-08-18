@@ -48,46 +48,80 @@ class GameScene: SKScene {
         let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight))
         swipeRight.direction = .right
         view.addGestureRecognizer(swipeRight)
+        
+        //repeatedly runs addMeteor function every second.
+        
+        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(addMeteor), SKAction.wait(forDuration: 1.0)])))
+        
     }
     
     
-    func swipedUp(sender:UISwipeGestureRecognizer){
-        var actionMove : SKAction
-        
-        actionMove = SKAction.move(to: CGPoint(x: hero.position.x, y: hero.position.y + heroSpeed), duration: 0.3)
-        
-        hero.run(actionMove)
-        print("Up")
-    }
-    
-    func swipedDown(sender:UISwipeGestureRecognizer){
+    func swipedUp(sender: UISwipeGestureRecognizer){
         
         var actionMove: SKAction
         
-        actionMove = SKAction.move(to: CGPoint(x: hero.position.x, y: hero.position.y - heroSpeed), duration: 0.5)
+        if (hero.position.y + heroSpeed >= size.height){
+            
+            actionMove = SKAction.move(to: CGPoint(x: hero.position.x, y: size.height - hero.size.height/2), duration: 0.3)
+        }
+        else {
+            
+            actionMove = SKAction.move(to: CGPoint(x: hero.position.x, y: hero.position.y + heroSpeed), duration: 0.3)
+        }
         
         hero.run(actionMove)
     }
     
     
-    func swipedLeft(sender:UISwipeGestureRecognizer){
+    func swipedDown(sender: UISwipeGestureRecognizer){
         
         var actionMove: SKAction
         
-        actionMove = SKAction.move(to: CGPoint(x: hero.position.x - heroSpeed, y: hero.position.y), duration: 0.5)
+        if (hero.position.y - heroSpeed <= 0){
+            
+            actionMove = SKAction.move(to: CGPoint(x: hero.position.x, y: hero.size.height/2), duration: 0.3)
+        }
+        else {
+            actionMove = SKAction.move(to: CGPoint(x: hero.position.x, y: hero.position.y - heroSpeed), duration: 0.3)
+        }
         
         hero.run(actionMove)
     }
     
     
-    func swipedRight(sender:UISwipeGestureRecognizer){
+    func swipedLeft(sender: UISwipeGestureRecognizer){
         
         var actionMove: SKAction
         
-        actionMove = SKAction.move(to: CGPoint(x: hero.position.x + heroSpeed, y: hero.position.y), duration: 0.5)
+        if (hero.position.x - heroSpeed <= 0) {
+            
+            actionMove = SKAction.move(to: CGPoint(x: hero.size.width/2, y: hero.position.y), duration: 0.3)
+        }
+        else {
+            
+            actionMove = SKAction.move(to: CGPoint(x: hero.position.x - heroSpeed, y: hero.position.y), duration: 0.3)
+        }
         
         hero.run(actionMove)
     }
+    
+    
+    func swipedRight(sender: UISwipeGestureRecognizer){
+        
+        var actionMove: SKAction
+        
+        if (hero.position.x + heroSpeed >= size.width) {
+            
+            actionMove = SKAction.move(to: CGPoint(x: size.width - hero.size.width/2, y: hero.position.y), duration: 0.3)
+        }
+        else {
+            
+            actionMove = SKAction.move(to: CGPoint(x: hero.position.x + heroSpeed, y: hero.position.y), duration: 0.3)
+        }
+        
+        hero.run(actionMove)
+    }
+    
     
     
     func touchDown(atPoint pos : CGPoint) {
@@ -156,5 +190,29 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+    }
+    
+    func addMeteor(){
+       
+        var meteor: Enemy
+        
+        meteor = Enemy (imageNamed: "MeteorLeft")
+        meteor.size.height = 35
+        meteor.size.width = 50
+        let randomY = random() * ((size.height - meteor.size.height/2) - meteor.size.height/2) + meteor.size.height/2
+        meteor.position = CGPoint (x: size.width + meteor.size.width/2, y: randomY)
+        addChild(meteor)
+        
+        
+        var moveMeteor: SKAction
+        moveMeteor = SKAction.move (to: CGPoint (x: -meteor.size.width/2, y: randomY), duration: (3.0))
+        meteor.run(SKAction.sequence([moveMeteor,SKAction.removeFromParent()]))
+    }
+    //creates a random float between 0.0 and 1.0
+    
+    func random() -> CGFloat {
+        
+        return CGFloat(Float(arc4random()) / Float(UINT32_MAX))
+        
     }
 }

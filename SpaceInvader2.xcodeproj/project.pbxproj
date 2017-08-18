@@ -14,6 +14,7 @@
 		9E4548221F0D3B3600FE5A8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E4548201F0D3B3600FE5A8A /* Main.storyboard */; };
 		9E4548241F0D3B3600FE5A8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E4548231F0D3B3600FE5A8A /* Assets.xcassets */; };
 		9E4548271F0D3B3600FE5A8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E4548251F0D3B3600FE5A8A /* LaunchScreen.storyboard */; };
+		9E5F89B31F468A7F00B95884 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5F89B21F468A7F00B95884 /* Enemy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		9E4548231F0D3B3600FE5A8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9E4548261F0D3B3600FE5A8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9E4548281F0D3B3600FE5A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E5F89B21F468A7F00B95884 /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				9E4548161F0D3B3600FE5A8A /* AppDelegate.swift */,
 				9E4548181F0D3B3600FE5A8A /* GameScene.sks */,
 				9E45481C1F0D3B3600FE5A8A /* GameScene.swift */,
+				9E5F89B21F468A7F00B95884 /* Enemy.swift */,
 				9E45481E1F0D3B3600FE5A8A /* GameViewController.swift */,
 				9E4548201F0D3B3600FE5A8A /* Main.storyboard */,
 				9E4548231F0D3B3600FE5A8A /* Assets.xcassets */,
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E5F89B31F468A7F00B95884 /* Enemy.swift in Sources */,
 				9E45481D1F0D3B3600FE5A8A /* GameScene.swift in Sources */,
 				9E45481F1F0D3B3600FE5A8A /* GameViewController.swift in Sources */,
 				9E4548171F0D3B3600FE5A8A /* AppDelegate.swift in Sources */,
